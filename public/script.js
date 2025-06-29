@@ -50,12 +50,31 @@ form.addEventListener('submit', async function (e) {
 });
 
 function appendMessage(sender, text) {
-  const msg = document.createElement('div');
-  msg.classList.add('message', sender);
-  msg.textContent = text;
-  chatBox.appendChild(msg);
+  const messageRow = document.createElement('div');
+  messageRow.classList.add('message-row', sender);
+
+  const avatar = document.createElement('img');
+  avatar.classList.add('avatar');
+  avatar.src = sender === 'user' ? 'https://static.vecteezy.com/system/resources/thumbnails/002/002/403/small/man-with-beard-avatar-character-isolated-icon-free-vector.jpg' : 'https://img.freepik.com/free-vector/head-with-ai-chip_78370-3672.jpg';
+  avatar.alt = `${sender} avatar`;
+
+  const messageBubble = document.createElement('div');
+  messageBubble.classList.add('message', sender);
+
+  if (sender === 'bot') {
+    // Gunakan library 'marked' untuk mengubah Markdown dari respons bot
+    // Ini akan merender format seperti bold, list, dll.
+    messageBubble.innerHTML = marked.parse(text);
+  } else {
+    // Untuk pesan pengguna, gunakan textContent agar aman.
+    messageBubble.textContent = text;
+  }
+
+  messageRow.appendChild(avatar);
+  messageRow.appendChild(messageBubble);
+  chatBox.appendChild(messageRow);
   chatBox.scrollTop = chatBox.scrollHeight;
-  return msg; // Return the element to allow modification
+  return messageRow; // Kembalikan seluruh baris untuk logika typing indicator
 }
 
 function setFormDisabled(isDisabled) {

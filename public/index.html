@@ -1,20 +1,131 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id" class="scroll-smooth">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Gemini AI Chatbot</title>
+  <title>Maritime AI - Konsultasi Maritim Instan</title>
+  <meta name="description" content="Dapatkan jawaban cepat seputar pelayaran, sertifikasi kapal, dan navigasi laut dengan teknologi AI canggih.">
+  
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- Custom CSS for Chatbox -->
   <link rel="stylesheet" href="style.css"/>
+  
+  <!-- Marked.js for rendering markdown -->
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
 </head>
-<body>
-  <div class="container">
-    <h1>Gemini AI Chatbot</h1>
-    <div id="chat-box" class="chat-box"></div>
-    <form id="chat-form">
-      <input type="text" id="user-input" placeholder="Type your message..." autocomplete="off" required />
-      <button type="submit">Send</button>
-    </form>
-  </div>
+<body class="bg-gray-50 text-gray-800 font-sans">
+
+  <!-- Header -->
+  <header class="bg-white/80 backdrop-blur-lg sticky top-0 z-50 shadow-sm">
+    <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+      <a href="#home" class="flex items-center gap-2">
+        <!-- Maritime Logo SVG -->
+        <svg class="w-8 h-8 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H7a3 3 0 00-3 3v8a3 3 0 003 3z"></path></svg>
+        <span class="text-xl font-bold text-blue-800">MaritimeAI</span>
+      </a>
+      <ul class="hidden md:flex items-center space-x-8 text-gray-600 font-medium">
+        <li><a href="#home" class="hover:text-blue-600 transition-colors">Beranda</a></li>
+        <li><a href="#features" class="hover:text-blue-600 transition-colors">Fitur</a></li>
+        <li><a href="#about" class="hover:text-blue-600 transition-colors">Tentang</a></li>
+        <li><a href="#chatbot" class="hover:text-blue-600 transition-colors">Marina AI Assistant</a></li>
+        <li><a href="#contact" class="hover:text-blue-600 transition-colors">Kontak</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <!-- Hero Section -->
+    <section id="home" class="relative container mx-auto px-6 py-20 md:py-32 flex flex-col md:flex-row items-center text-center md:text-left">
+      <div class="md:w-1/2">
+        <h1 class="text-4xl md:text-5xl font-extrabold text-gray-900 leading-tight">
+          Konsultasi Maritim Instan dengan <span class="text-blue-600">AI</span>
+        </h1>
+        <p class="mt-4 text-lg text-gray-600">
+          Dapatkan jawaban cepat seputar pelayaran, sertifikasi kapal, dan navigasi laut dengan teknologi AI.
+        </p>
+        <a href="#chatbot" class="mt-8 inline-block bg-blue-600 text-white font-bold py-3 px-8 rounded-full hover:bg-blue-700 transition-transform transform hover:scale-105">
+          Coba Sekarang
+        </a>
+      </div>
+      <div class="md:w-1/2 mt-10 md:mt-0">
+        <img src="https://media.istockphoto.com/id/1491452808/photo/ai-technology-global-logistics-international-delivery-concept-world-map-logistic-and-supply.jpg?s=612x612&w=0&k=20&c=IJJqcrRXFuMEwsEYK9aSJ23JEcqlgd4VhBUfmMCBiC8=" alt="Ilustrasi Kapal Kargo di Laut" class="rounded-lg shadow-xl">
+      </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="py-20 bg-white">
+      <div class="container mx-auto px-6 text-center">
+        <h2 class="text-3xl font-bold mb-2">Fitur Unggulan Kami</h2>
+        <p class="text-gray-600 mb-12">Solusi cerdas untuk kebutuhan maritim Anda.</p>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <!-- Feature 1 -->
+          <div class="p-6 bg-gray-50 rounded-lg shadow-sm hover:shadow-lg transition-shadow">
+            <h3 class="text-xl font-semibold mb-2">Rute Pelayaran Cerdas</h3>
+          </div>
+          <!-- Feature 2 -->
+          <div class="p-6 bg-gray-50 rounded-lg shadow-sm hover:shadow-lg transition-shadow">
+            <h3 class="text-xl font-semibold mb-2">Konsultasi Sertifikat Kapal</h3>
+          </div>
+          <!-- Feature 3 -->
+          <div class="p-6 bg-gray-50 rounded-lg shadow-sm hover:shadow-lg transition-shadow">
+            <h3 class="text-xl font-semibold mb-2">Cek Status Survey</h3>
+          </div>
+          <!-- Feature 4 -->
+          <div class="p-6 bg-gray-50 rounded-lg shadow-sm hover:shadow-lg transition-shadow">
+            <h3 class="text-xl font-semibold mb-2">Panduan Peraturan Maritim</h3>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-20">
+      <div class="container mx-auto px-6 flex flex-col md:flex-row items-center gap-12">
+        <div class="md:w-1/2">
+          <h2 class="text-3xl font-bold mb-4">Tentang MaritimeAI</h2>
+          <p class="text-gray-600 leading-relaxed">
+            Misi kami adalah memberdayakan industri maritim dengan menyediakan akses instan ke informasi penting. MaritimeAI dirancang untuk membantu pelaut, operator, pemilik kapal, dan seluruh stakeholder dalam mengambil keputusan yang lebih baik dan lebih cepat, mengurangi kerumitan regulasi, dan meningkatkan efisiensi operasional di laut.
+          </p>
+        </div>
+        <div class="md:w-1/2">
+          <img src="https://www.shutterstock.com/image-photo/ai-cargo-ship-technology-global-600nw-2372585739.jpgnode" alt="Ilustrasi Tim Maritim" class="rounded-lg shadow-xl">
+        </div>
+      </div>
+    </section>
+
+    <!-- Chatbot Section -->
+    <section id="chatbot" class="py-20 bg-white">
+      <div class="container mx-auto px-6">
+        <div class="max-w-3xl mx-auto">
+          <h2 class="text-3xl font-bold text-center mb-8">Marina AI Assistant</h2>
+          <div class="bg-white rounded-lg shadow-2xl border border-gray-200">
+            <div id="chat-box" class="chat-box"></div>
+            <form id="chat-form" class="p-4 border-t border-gray-200">
+              <input type="text" id="user-input" placeholder="Tanyakan apa pun tentang pelayaran, regulasi kapal, dan navigasi laut…" autocomplete="off" required />
+              <button type="submit">Send</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer id="contact" class="bg-gray-800 text-white py-12">
+    <div class="container mx-auto px-6 text-center">
+      <p class="font-semibold text-lg mb-2">MaritimeAI</p>
+      <p class="text-gray-400 mb-4">Membawa Inovasi ke Dunia Maritim.</p>
+      <div class="flex justify-center space-x-6 mb-4">
+        <a href="#" class="text-gray-400 hover:text-white">Twitter</a>
+        <a href="#" class="text-gray-400 hover:text-white">LinkedIn</a>
+        <a href="#" class="text-gray-400 hover:text-white">Kontak</a>
+      </div>
+      <p class="text-gray-500 text-sm">&copy; 2024 MaritimeAI. All Rights Reserved. | <a href="#" class="hover:underline">Kebijakan Privasi</a></p>
+    </div>
+  </footer>
+
   <script src="script.js"></script>
 </body>
 </html>
